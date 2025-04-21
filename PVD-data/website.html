@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg" href="airplane2c80b9.svg">
+  <title>10 years of travel at T.F. Green</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body {
+      margin: 0;
+      background-color: #f7fafa;
+      overflow-x: hidden;
+    }
+
+    .content {
+      position: relative;
+      z-index: 10;
+      color: #4d4d4d;
+      font-size: 18px;
+    }
+
+    .block {
+      background: white;
+      margin: 100px auto;
+      padding: 40px;
+      width: 80%;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+      border-radius: 12px;
+    }
+
+    .plane {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      background-size: contain;
+      background-repeat: no-repeat;
+      z-index: 2;
+      transform-origin: center center;
+    }
+  </style>
+</head>
+<body>
+  <div class="background" id="background"></div>
+  <div class="content">
+    <div class="block">
+        <img src="graphs/infographic.png" style="height: 550px; display: block; margin: 0 auto;">
+        <h1 style="text-align: center; font-size: 50px;"><b>10 years of travel at Providence's<br>T.F. Green Airport</b></h1>
+        <h2 style="text-align: center; font-size: 30px; color: #838282"><i>(2015-2024)</i></h2>
+        <p style="text-align: center; font-size: 20px; color: #838282"><i>By Owen Dahlkamp</i></p>
+      </div><div class="block">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </div><div class="block">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </div><div class="block">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </div><div class="block">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </div><div class="block">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </div><div class="block">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </div><div class="block">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </div><div class="block">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </div><div class="block">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </div><div class="block">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </div><div class="block">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </div><div class="block">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </div><div class="block">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </div><div class="block">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </div><div class="block">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </div><div class="block">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+      </div>
+    <div class="block">
+      <img src="image1.jpg" alt="Image 1" width="100%">
+    </div>
+    <div class="block">
+      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    </div>
+    <div class="block">
+      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+    </div>
+  </div>
+
+  <script>
+    const colors = ['#7fccbb', '#b7c27c', '#2c80b9'];
+    const icons = {
+      '#7fccbb': 'airplane7fccbb.svg',
+      '#b7c27c': 'airplaneb7c27c.svg',
+      '#2c80b9': 'airplane2c80b9.svg'
+    };
+
+    const background = document.getElementById('background');
+    const planeCount = 300; // Total number of planes
+    const planes = [];
+    let lastScrollY = window.scrollY;
+
+    // Create planes and evenly distribute across the horizontal axis
+    for (let i = 0; i < planeCount; i++) {
+      const plane = document.createElement('div');
+      const color = colors[i % colors.length];
+      const icon = icons[color];
+
+      plane.classList.add('plane');
+      plane.style.backgroundImage = `url('${icon}')`;
+
+      const angle = 90; // All planes travel upward (90 degrees)
+      const speed = 1 + Math.random();  // Speed of the plane's movement
+
+      // Distribute planes evenly across the horizontal axis
+      const x = (i * (window.innerWidth / planeCount)); // Evenly space planes horizontally
+      const y = Math.random() * document.body.scrollHeight; // Random vertical position
+
+      plane.dataset.angle = angle;
+      plane.dataset.speed = speed;
+      plane.dataset.x = x;
+      plane.dataset.y = y;
+
+      // No rotation needed, planes always face upwards
+      plane.style.transform = `rotate(${angle}deg +90 )`; // No rotation necessary if facing up
+      plane.style.left = `${x}px`;
+      plane.style.top = `${y}px`;
+
+      background.appendChild(plane);
+      planes.push({ plane });
+    }
+
+    // Update the planes as the user scrolls
+    function updatePlanes() {
+      const currentScrollY = window.scrollY;
+      const scrollDelta = currentScrollY - lastScrollY;
+      const movementMultiplier = 0.2; // Adjust to make planes move more per scroll
+
+      planes.forEach(({ plane }) => {
+        let x = parseFloat(plane.dataset.x);
+        let y = parseFloat(plane.dataset.y);
+        const angle = parseFloat(plane.dataset.angle);
+        const speed = parseFloat(plane.dataset.speed);
+
+        // Calculate upward movement based on scroll direction
+        const dy = -1 * Math.sin(angle * Math.PI / 180) * speed * scrollDelta * movementMultiplier;
+
+        y = (y + dy + document.body.scrollHeight) % document.body.scrollHeight;
+
+        plane.dataset.x = x;
+        plane.dataset.y = y;
+
+        plane.style.left = `${x}px`;
+        plane.style.top = `${y}px`;
+      });
+
+      lastScrollY = currentScrollY;
+    }
+
+    window.addEventListener('scroll', updatePlanes);
+    window.addEventListener('resize', () => {
+      planes.forEach(({ plane }) => {
+        plane.dataset.x = (Math.random() * window.innerWidth); // New random x on resize
+        plane.dataset.y = Math.random() * document.body.scrollHeight; // New random y
+      });
+    });
+  </script>
+</body>
+</html>
