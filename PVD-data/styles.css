@@ -1,8 +1,14 @@
-#myTooltip {
-	position: absolute;
-	pointer-events: none;
-    padding: 15px;
-	background-color: white;
-	border: 1px solid black;
-    opacity: 0;
-}
+.content {
+	position: relative;
+  }
+  
+  .block {
+	background: white;
+	margin: 0 auto 200px auto; /* add spacing below */
+	padding: 40px;
+	width: 80%;
+	max-width: 800px;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+	border-radius: 12px;
+  }
+  
